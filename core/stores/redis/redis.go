@@ -116,7 +116,7 @@ func NewRedis(conf RedisConf, opts ...Option) (*Redis, error) {
 		opts = append([]Option{Cluster()}, opts...)
 	}
 	if len(conf.UserName) > 0 {
-		opts = append(opts, WithUserName(conf.UserName))
+		opts = append([]Option{WithUserName(conf.UserName)}, opts...)
 	}
 	if len(conf.Pass) > 0 {
 		opts = append([]Option{WithPass(conf.Pass)}, opts...)
